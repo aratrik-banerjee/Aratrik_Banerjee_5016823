@@ -1,0 +1,11 @@
+DECLARE
+  CURSOR c_transactions IS
+    SELECT CustomerID, TransactionDate, Amount, TransactionType
+    FROM Transactions
+    WHERE TransactionDate BETWEEN TRUNC(SYSDATE, 'MM') AND LAST_DAY(SYSDATE);
+  v_transaction c_transactions%ROWTYPE;
+BEGIN
+  FOR v_transaction IN c_transactions LOOP
+    DBMS_OUTPUT.PUT_LINE('Customer ' || v_transaction.CustomerID || ' had a ' || v_transaction.TransactionType || ' of ' || v_transaction.Amount || ' on ' || v_transaction.TransactionDate);
+  END LOOP;
+END;

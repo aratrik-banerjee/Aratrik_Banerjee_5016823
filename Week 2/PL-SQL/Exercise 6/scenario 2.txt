@@ -1,0 +1,13 @@
+DECLARE
+  CURSOR c_accounts IS
+    SELECT AccountID, Balance
+    FROM Accounts;
+  v_account c_accounts%ROWTYPE;
+BEGIN
+  FOR v_account IN c_accounts LOOP
+    UPDATE Accounts
+    SET Balance = Balance - 50 -- Assuming the annual fee is $50
+    WHERE AccountID = v_account.AccountID;
+  END LOOP;
+  COMMIT;
+END;

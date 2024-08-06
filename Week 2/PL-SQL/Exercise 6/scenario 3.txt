@@ -1,0 +1,13 @@
+DECLARE
+  CURSOR c_loans IS
+    SELECT LoanID, InterestRate
+    FROM Loans;
+  v_loan c_loans%ROWTYPE;
+BEGIN
+  FOR v_loan IN c_loans LOOP
+    UPDATE Loans
+    SET InterestRate = v_loan.InterestRate * 1.05 -- Assuming a 5% increase
+    WHERE LoanID = v_loan.LoanID;
+  END LOOP;
+  COMMIT;
+END;

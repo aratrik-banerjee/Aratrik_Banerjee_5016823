@@ -1,0 +1,11 @@
+DECLARE
+  CURSOR c_loans IS
+    SELECT LoanID, CustomerID, EndDate
+    FROM Loans
+    WHERE EndDate BETWEEN SYSDATE AND SYSDATE + 30;
+  v_loan c_loans%ROWTYPE;
+BEGIN
+  FOR v_loan IN c_loans LOOP
+    DBMS_OUTPUT.PUT_LINE('Reminder: Loan ' || v_loan.LoanID || ' for Customer ' || v_loan.CustomerID || ' is due on ' || v_loan.EndDate);
+  END LOOP;
+END;
