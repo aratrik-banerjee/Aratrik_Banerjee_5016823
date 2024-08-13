@@ -1,8 +1,0 @@
-com\employeemanagement\App.class
-com\employeemanagement\repository\DepartmentRepository.class
-com\employeemanagement\controller\EmployeeController.class
-com\employeemanagement\repository\EmployeeRepository.class
-com\employeemanagement\model\Employee.class
-com\employeemanagement\controller\DepartmentController.class
-com\employeemanagement\model\Department.class
-com\employeemanagement\model\NamedQueries.class
